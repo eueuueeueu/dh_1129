@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    input {
+      width: 100px;
+      margin: 10px;
+      height: 50px;
+    }
+
+    button {
+      display: inline-block;
+      width: 80px;
+      height: 30px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>一个面包5元钱，客户可以买整数个面包，封装一个函数，客户输入钱数和个数，点击找钱按钮，弹出应找多少钱</p>
+  <div>
+    输入钱数<input type="text">
+    输入个数<input type="text">
+  </div>
+  <button>找钱</button>
+  <p></p>
+</body>
+<script>
+  let money = document.querySelector('div input:first-child')
+  let number = document.querySelector('div input:last-child')
+  let btn = document.querySelector('button')
+  let p = document.querySelector('body p:nth-of-type(2)')
+  btn.addEventListener('click', () => {
+    p.innerHTML = ''
+    let span = document.createElement('span')
+    span.innerHTML = giveChange(money.value, number.value)
+    p.appendChild(span)
+  })
+  function giveChange(money, number) {
+    if (money >= 5) {
+      return `我找你${money - 5 * number}块钱`
+    } else {
+      return `你是来找茬的是吧`
+    }
+  }
+</script>
+
+</html>

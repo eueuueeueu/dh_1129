@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    input {
+      width: 100px;
+      margin: 10px;
+      height: 50px;
+    }
+
+    button {
+      display: inline-block;
+      width: 80px;
+      height: 30px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>写一个函数getSum(start,end)，传入两个整数start和end，计算从start到end的累加值，并返回和。</p>
+  <div>
+    输入start<input type="text">
+    输入end<input type="text">
+  </div>
+  <button>确定</button>
+  <p></p>
+</body>
+<script>
+  let start = document.querySelector('div input:first-child')
+  let end = document.querySelector('div input:nth-child(2)')
+  let btn = document.querySelector('button')
+  let p = document.querySelector('body p:nth-of-type(2)')
+  btn.addEventListener('click', () => {
+    p.innerHTML = ''
+    let span = document.createElement('span')
+    span.innerHTML = getSum(start.value, end.value)
+    p.appendChild(span)
+  })
+  // start到end的累加值，并返回和
+  function getSum(start, end) {
+    let sum = 0
+    if (start % 1 === 0 && end % 1 === 0 && !isNaN(start) && !isNaN(end)) {
+      for (let i = parseInt(start); i <= parseInt(end); i++) {
+        sum += i
+      }
+      return `${start}到${end}的累加值是${sum}`
+    } else {
+      return `你是来找茬的是吧`
+    }
+  }
+</script>
+
+</html>

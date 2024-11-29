@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    input {
+      width: 270px;
+      margin: 10px;
+      height: 50px;
+      padding-left: 5px;
+    }
+
+    button {
+      display: inline-block;
+      width: 80px;
+      height: 30px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>7、将数组 ['red', 'green', 'blue', 'yellow', 'purple'] 的内容反过来存放要求：两种方法</p>
+  <div>
+    输入数组<input type="text">
+  </div>
+  <button>确定</button>
+  <p></p>
+</body>
+<script>
+  let num = document.querySelector('div input:first-child')
+  let btn = document.querySelector('button')
+  let p = document.querySelector('body p:nth-of-type(2)')
+  num.value = "['red','green','blue','yellow','purple']"
+  let arr
+  btn.addEventListener('click', () => {
+    // ----------对传入的字符串数组做处理------
+    arr = [...num.value]
+    arr.pop()
+    arr.shift()
+    arr = arr.join('').split(',')
+    // --------------------------------------
+    p.innerHTML = ''
+    let span = document.createElement('span')
+    span.innerHTML = getReverse(arr)
+    p.appendChild(span)
+  })
+  function getReverse(arr) {
+    // 方法一
+    // let newArr = []
+    // for (let i = 0; i < arr.length; i++) {
+    //   newArr.unshift(arr[i])
+    // }
+    // return `新数组是[${newArr}]`
+    // 方法二
+    arr.reverse()
+    return `新数组是[${arr}]`
+  }
+</script>
+
+</html>

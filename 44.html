@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    input {
+      width: 270px;
+      margin: 10px;
+      height: 50px;
+      padding-left: 5px;
+    }
+
+    button {
+      display: inline-block;
+      width: 80px;
+      height: 30px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>4、新建一个数组，里面存放100个整数（ 1~100）</p>
+  <div>
+    新建一个数组,想存多少个整数<input type="text">
+  </div>
+  <button>确定</button>
+  <p></p>
+</body>
+<script>
+  let num = document.querySelector('div input:first-child')
+  let btn = document.querySelector('button')
+  let p = document.querySelector('body p:nth-of-type(2)')
+  num.value = 100
+  let arr
+  btn.addEventListener('click', () => {
+    let newNum = parseInt(num.value)
+    p.innerHTML = ''
+    let span = document.createElement('span')
+    span.innerHTML = getArr(newNum)
+    p.appendChild(span)
+  })
+  function getArr(newNum) {
+    let newArr = []
+    for (let i = 0; i < newNum; i++) {
+      newArr.push(Math.floor(Math.random() * 100) +1)
+    }
+    return `数组:[${newArr}]`
+  }
+</script>
+
+</html>

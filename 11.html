@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    input {
+      width: 100px;
+      margin: 10px;
+      height: 50px;
+    }
+
+    button {
+      display: inline-block;
+      width: 80px;
+      height: 30px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>1、求数组 [2,6,1,7,4] 里面所有元素的和以及平均值。</p>
+  <div>
+    输入你想求和/平均值的数组<input type="text">
+  </div>
+  <button>确定</button>
+  <p></p>
+</body>
+<script>
+  let num = document.querySelector('div input:first-child')
+  let btn = document.querySelector('button')
+  let p = document.querySelector('body p:nth-of-type(2)')
+  num.value = '[2,6,1,7,4]'
+  let arr
+  btn.addEventListener('click', () => {
+    // ----------对传入的字符串数组做处理------
+    arr = [...num.value]
+    arr.pop()
+    arr.shift()
+    arr = arr.join('').split(',')
+    // --------------------------------------
+    p.innerHTML = ''
+    let span = document.createElement('span')
+    span.innerHTML = getSun_average(arr)
+    p.appendChild(span)
+  })
+  function getSun_average(arr) {
+    let Sun = 0
+    let average = 0
+    for (let i = 0; i < arr.length; i++) {
+      Sun += parseInt(arr[i])
+    }
+    average = Sun / arr.length
+    return `数组的和是${Sun}，数组的平均值是${average}`
+  }
+</script>
+
+</html>

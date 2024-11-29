@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    input {
+      width: 270px;
+      margin: 10px;
+      height: 50px;
+      padding-left: 5px;
+    }
+
+    button {
+      display: inline-block;
+      width: 80px;
+      height: 30px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>8、判断数组中是否所有的数字都大于0,是就在控制台打印出“数组中所有数字都大于0”不是就在控制台打印“NO”</p>
+  <div>
+    输入数组<input type="text">
+  </div>
+  <button>确定</button>
+  <p></p>
+</body>
+<script>
+  let num = document.querySelector('div input:first-child')
+  let btn = document.querySelector('button')
+  let p = document.querySelector('body p:nth-of-type(2)')
+  num.value = "[-1,1,1,2,3,4,5,6,9]"
+  let arr
+  btn.addEventListener('click', () => {
+    // ----------对传入的字符串数组做处理------
+    arr = [...num.value]
+    arr.pop()
+    arr.shift()
+    arr = arr.join('').split(',')
+    // --------------------------------------
+    p.innerHTML = ''
+    let span = document.createElement('span')
+    span.innerHTML = greaterZero(arr)
+    p.appendChild(span)
+  })
+  function greaterZero(arr) {
+    let flag = true
+    for (let i = 0; i < arr.length; i++) {
+      if (parseInt(arr[i]) <= 0) {
+        flag = false
+      }
+    }
+    console.log(flag ? `数组中所有数字都大于0` : `NO`);
+    return flag ? `数组中所有数字都大于0` : `NO`
+  }
+</script>
+
+</html>
